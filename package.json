@@ -1,0 +1,25 @@
+{
+  "name": "book-list-server",
+  "version": "1.0.0",
+  "description": "# Author Alissa Beddow || Version: 1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/book-lister/book-list-server.git"
+  },
+  "author": "alissa beddow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/book-lister/book-list-server/issues"
+  },
+  "homepage": "https://github.com/book-lister/book-list-server#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "pg": "^7.4.0"
+  }
+}
