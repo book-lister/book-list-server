@@ -11,6 +11,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 
 app.use(cors());
+// add in body parser
 
 app.get('/api/v1/books/:id', (req, res) => {
     client.query('SELECT * FROM books WHERE book_id = $1', [req.params.book_id])
