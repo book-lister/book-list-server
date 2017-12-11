@@ -3,8 +3,6 @@ const express = require('express');
 const app = express();
 const pg = require('pg');
 const cors = require('cors');
-// const fs = require('fs');
-// const data = require('./books.json');
 
 const PORT = process.env.PORT;
 // const connString = 'postgres://@localhost:5432/book_list';
@@ -14,9 +12,14 @@ client.connect();
 
 app.use(cors());
 
-// fs.readFile('./books.json', (err, JSON.stringify(data)) => {
-//     if (err) throw (err);
-//     console.log(data);
+app.get('/api/v1/books/:id', (req, res) => {
+    client.query('SELECT * FROM books WHERE book_id = $1', [req.params.book_id])
+        .then(data => res.send(data.rows))
+        .catch(console.error);
+});
+
+// app.get('/', (req, res) => {
+//     res.sendFile('index.html',{root:'.'});
 // });
 
 app.get('/api/v1/books', (req, res) => {
@@ -26,9 +29,10 @@ app.get('/api/v1/books', (req, res) => {
 });
 
 app.get('/api/v1/books/:id', (req, res) => {
-    // will query db for cards sent to recipient
+    // will query db for books by id
     // this is not showing up; need to add info here.
-    res.send('will eventually send user book data');
+    client.query('SELECT book_id, title, author, image_url FROM books WHERE ;')
+        .then(data => res.send(data.rows));
 });
 
 app.listen(PORT, () => {
